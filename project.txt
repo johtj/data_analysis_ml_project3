@@ -1,0 +1,35 @@
+Part a) Read the data, consider scaling, how do we structure the input
+for the different algorithms
+
+Plot some timeseries, diffs and histogram plots to look at outliers
+
+Part b)
+
+You need to include at least two central algorithms, 
+or as an alternative explore methods from decisions tree to bagging,
+random forests and boosting. 
+Explain the basics of the methods you have chosen to work with. 
+This would be your theory part.
+
+k-NN classification and Autoencoders - setup and methods
+
+Part c)
+
+Then describe your algorithm and its implementation and tests you have performed.
+
+Tests: 
+*   classification of 2025 dataset and 2024 dataset compare against 
+    hand done flagging
+*   attempt to flag out values from 2024 using 2025 as a baseline
+
+Part d)
+
+Then presents your results and findings, link with existing literature and more.
+what it says on the tin
+
+Part e)
+Finally, here you should present a critical assessment
+of the methods you have studied and link your results 
+with the existing literature.
+
+Again, what it says on the tin.

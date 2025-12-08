@@ -28,7 +28,7 @@ def pool_data_array(da):
 
     return np.array(data_ds_temp) 
 
-def pool_data_variables(ds variables):
+def pool_data_variables(ds, variables):
     """
     Function that takes a trajectory based xarray dataset and returns an array
     (without time or lat/lon indexing)  of all of the values in the dataset. 
@@ -40,7 +40,9 @@ def pool_data_variables(ds variables):
 
         ds : xr.Dataset 
             array containing the data for the variable you want to pool ds[var name]
-
+        
+        variables : list(str)
+            list contaning the variables 
     Returns:
     --------
 
@@ -49,6 +51,8 @@ def pool_data_variables(ds variables):
             shape number of data points x number variables
     """
     data_ds_temp = []
+    num_vars = len(variables)
+    num_points = len(ds.time_temp.values)
 
     for traj in range(ds["trajectory"].size):
         temp = ds.isel(trajectory=traj)

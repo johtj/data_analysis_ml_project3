@@ -41,7 +41,7 @@ def anomalyPredict(model: AnomalyDetector, data: np.array, threshold: float):
     """
     
     reconstructions = model(data)
-    loss = tf.keras.mae(reconstructions,data)
+    loss = tf.keras.losses.mae(reconstructions,data)
     return tf.math.less(loss,threshold)
 
 def print_stats(predictions,labels):

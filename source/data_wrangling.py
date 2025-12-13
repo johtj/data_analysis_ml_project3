@@ -71,6 +71,7 @@ def pool_data_variables(ds, variables,exclude,VERBOSE=False):
     dataset = np.full((num_points,num_vars+1),np.nan)
     row_start = 0
     total = 0
+    times = []
 
     #add variable data
     for traj in range(ds["trajectory"].size):
@@ -90,6 +91,8 @@ def pool_data_variables(ds, variables,exclude,VERBOSE=False):
 
         col = 0
         for variable in variables:  
+            if variable == "time_temp":
+                times.append(time_traj[~np.isnat(time_traj)])
             #since all these arrays are indexed in the same order I should be able to go
             #variable by variable and add column by column, but maybe check this 
             
@@ -113,5 +116,6 @@ def pool_data_variables(ds, variables,exclude,VERBOSE=False):
         row_start = row_end
         
     dataset_pooled = pd.DataFrame(dataset,columns=variables+["KVS_ID"])
+    dataset_pooled["time_temp"] = np.concatenate(times)
 
     return dataset_pooled

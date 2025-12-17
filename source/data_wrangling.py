@@ -119,3 +119,57 @@ def pool_data_variables(ds, variables,exclude,VERBOSE=False):
     dataset_pooled["time_temp"] = np.concatenate(times)
 
     return dataset_pooled
+
+def fill_data(ds,array,variables):
+    """
+    Function to fill array of size nr buoys x num vars x num datapoints
+    with data from ds
+
+    input:
+    ------
+        ds : xr.Dataset 
+            dataset containing variables indexed by trajectory
+
+        array: np.ndarray 
+            array of shape nr buoys x num vars x num datapoints
+    
+    Returns:
+    --------
+        array : np.ndarray 
+            array filled with data, padded with nan 
+    """
+    col = 0
+    for var in variables:
+        variable = ds[var].values
+        if variable.shape != array[:,col,:].shape:
+            array[:,col,0:variable.shape[-1]]
+        else:
+            array[:,col,:] = variable
+
+        col += 1
+
+    return array
+
+def fill_labels(labels,array):
+    """
+    Same as fill data but specifically targeting labels
+
+    input:
+    ------
+        labels : xr.Dataset
+            dataset containing just the labels
+        
+        array : np.ndarray
+            target array
+
+    returns:
+    --------
+        array : np.ndarray
+            array filled with labels
+    """
+    if labels.shape != array.shape:
+        array[:,0:labels.shape[-1]] = labels.values
+    else:
+        array = labels.values
+
+    return array

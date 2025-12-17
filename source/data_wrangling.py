@@ -168,8 +168,11 @@ def fill_labels(labels,array):
             array filled with labels
     """
     if labels.shape != array.shape:
-        array[:,0:labels.shape[-1]] = labels.values
+        array[:,0,0:labels.shape[-1]] = labels.values
+        array[:,1,0:labels.shape[-1]] = labels.values
     else:
-        array = labels.values
+        array[:,0,:] = labels.values
+        array[:,1,:] = labels.values
+        
 
     return array

@@ -26,7 +26,8 @@ class AnomalyDetector(Model):
     
 def anomalyPredict(model: AnomalyDetector, data: np.array, threshold: float):
     """
-    uses the anomalyDetector model to predict outliers for a given dataset and threshold
+    uses the anomalyDetector model to predict outliers for a given dataset and threshold, gives true for values that are 
+    not anomalous
 
     Parameters:
     -----------
@@ -42,7 +43,7 @@ def anomalyPredict(model: AnomalyDetector, data: np.array, threshold: float):
     
     reconstructions = model(data)
     loss = tf.keras.losses.mae(reconstructions,data)
-    return tf.math.less(loss,threshold)
+    return tf.math.greater(loss,threshold)
 
 def print_stats(predictions,labels):
     """

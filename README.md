@@ -1,4 +1,4 @@
-# Github repository for projects in FYS-STK4155: Applied Data Analysis and Machine Learning
+# Github repository for project 3 in FYS-STK4155: Applied Data Analysis and Machine Learning
 -------------------------------------------------------------------------------------------
 Johanna Tjernström, HT26
 

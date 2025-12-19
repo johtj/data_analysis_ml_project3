@@ -1,0 +1,9 @@
+numpy>=2.0.1
+xarray==2025.4.0
+matplotlib==3.10.6
+seaborn==0.13.2
+pandas==2.3.3
+importlib==8.5.0
+scikit-learn==1.7.1
+tensorflow==2.19.1
+cartopy==0.24.1
